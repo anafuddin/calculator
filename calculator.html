@@ -10,36 +10,37 @@
     <div class="calculator-cont">
         <div class="calculator">
             <form action="">
-                <div>
-                    <input type="text" name="" id="">
+                <div class="display">
+                    <h1> </h1>
                 </div>
                 <div>
-                    <input type="button" value="AC">
+                    <input type="button"  value='AC' class="AC">
                     <input type="button" value="DE">
                     <input type="button" value=".">
                     <input type="button" value="/">
                 </div>
                 <div>
-                    <input type="button" value="7">
-                    <input type="button" value="8">
-                    <input type="button" value="9">
+                    <input type="button" value="7" class="number">
+                    <input type="button" value="8" class="number">
+                    <input type="button" value="9" class="number">
                     <input type="button" value="*">
                 </div>
                 <div>
-                    <input type="button" value="4">
-                    <input type="button" value="5">
-                    <input type="button" value="6">
+                    <input type="button" value="4" class="number">
+                    <input type="button" value="5" class="number">
+                    <input type="button" value="6" class="number">
                     <input type="button" value="-">
                 </div>
                 <div>
-                    <input type="button" value="1">
-                    <input type="button" value="2">
-                    <input type="button" value="3">
+                    <input type="button" value="1" class="number">
+                    <input type="button" value="2" class="number">
+                    <input type="button" value="3" class="number">
                     <input type="button" value="+">
                 </div>
                 <div>
-                    <input type="button" value="0">
-                    <input type="button" value="=">
+                    <input type="button" value="0" class="number">
+                    <input type="button" value="00" class="number">
+                    <input type="button" value="=" style='width: 43%;'>
                 </div>
             </form>
         </div>
@@ -48,6 +49,24 @@
         let first_input
         let operator
         let second_input
+
+        const numberButton = document.querySelectorAll('.number')
+        const allClearButton = document.querySelector('.AC');
+        let output = document.querySelector('h1');
+        
+
+        function numberInput() { 
+            numberButton.forEach(button => button.addEventListener('click', function(e) {
+            output.textContent += e.target.value;
+            return e.target.value;
+        }))
+    }
+
+        const allClear = allClearButton.addEventListener('click', () => output.textContent = '');
+
+        const clearEntry = 
+
+        numberInput();
 
         function operate(first_input, second_input, operator) {
             
