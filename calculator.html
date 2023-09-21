@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <input type="button"  value='AC' class="AC">
-                    <input type="button" value="DE">
+                    <input type="button" value="DE"> 
                     <input type="button" value=".">
                     <input type="button" value="/">
                 </div>
@@ -52,6 +52,7 @@
 
         const numberButton = document.querySelectorAll('.number')
         const allClearButton = document.querySelector('.AC');
+        const clearEntryButton = document.querySelector('[value="DE"]');
         let output = document.querySelector('h1');
         
 
@@ -64,8 +65,9 @@
 
         const allClear = allClearButton.addEventListener('click', () => output.textContent = '');
 
-        const clearEntry = 
-
+        function clearEntry() {  clearEntryButton.addEventListener('click', () => output.textContent = output.textContent.slice(0, -1))
+    }
+        clearEntry();
         numberInput();
 
         function operate(first_input, second_input, operator) {
