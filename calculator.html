@@ -16,31 +16,31 @@
                 <div>
                     <input type="button"  value='AC' class="AC">
                     <input type="button" value="DE"> 
-                    <input type="button" value=".">
-                    <input type="button" value="/">
+                    <input type="button" value="." class="number">
+                    <input type="button" value="/" class="operator">
                 </div>
                 <div>
                     <input type="button" value="7" class="number">
                     <input type="button" value="8" class="number">
                     <input type="button" value="9" class="number">
-                    <input type="button" value="*">
+                    <input type="button" value="*" class="operator">
                 </div>
                 <div>
                     <input type="button" value="4" class="number">
                     <input type="button" value="5" class="number">
                     <input type="button" value="6" class="number">
-                    <input type="button" value="-">
+                    <input type="button" value="-" class="operator">
                 </div>
                 <div>
                     <input type="button" value="1" class="number">
                     <input type="button" value="2" class="number">
                     <input type="button" value="3" class="number">
-                    <input type="button" value="+">
+                    <input type="button" value="+" class="operator">
                 </div>
                 <div>
                     <input type="button" value="0" class="number">
                     <input type="button" value="00" class="number">
-                    <input type="button" value="=" style='width: 43%;'>
+                    <input type="button" value="=" style='width: 43%;' class="equal">
                 </div>
             </form>
         </div>
@@ -53,60 +53,81 @@
         const numberButton = document.querySelectorAll('.number')
         const allClearButton = document.querySelector('.AC');
         const clearEntryButton = document.querySelector('[value="DE"]');
+        const operatorButton = document.querySelectorAll('.operator');
+        const equalButton = document.querySelector('.equal');
+
         let output = document.querySelector('h1');
-        
+
 
         function numberInput() { 
             numberButton.forEach(button => button.addEventListener('click', function(e) {
+            if(e.target.value === "." && output.textContent.includes('.')) {
+                return;
+            }
+
             output.textContent += e.target.value;
             return e.target.value;
         }))
     }
 
+    numberInput();
+
         const allClear = allClearButton.addEventListener('click', () => output.textContent = '');
 
-        function clearEntry() {  clearEntryButton.addEventListener('click', () => output.textContent = output.textContent.slice(0, -1))
-    }
-        clearEntry();
-        numberInput();
+        const clearEntry = clearEntryButton.addEventListener('click', () => output.textContent = output.textContent.slice(0, -1))
 
-        function operate(first_input, second_input, operator) {
+        const operatorInput = operatorButton.forEach(button => {
+            button.addEventListener('click', (e) => {
+                first_input = Number(output.textContent);
+                output.textContent = '';
+                operator = e.target.value;
+                console.log(operator);
+            })
+        })
+
+
+        const equalInput = equalButton.addEventListener('click', () => {
+            second_input = Number(output.textContent);
+            output.textContent = operate(operator);
+        });
+
+        function operate(operator) {
             
-            if(operator === 'add') {
+            if(operator === '+') {
                 add(first_input, second_input);
             }
 
-            if(operator === 'subtract') {
+            if(operator === '-') {
                 subtract(first_input, second_input);
             }
 
-            if(operator === 'multiply') {
+            if(operator === '*') {
                 multiply(first_input, second_input);
             }
 
-            if(operator === 'divide') {
+            if(operator === '/') {
                 divide(first_input, second_input);
             }
         }
 
         function add(num1, num2) {
             let sum = num1 + num2;
-            return sum;
+            output.textContent = sum;
         }
 
         function subtract(num1, num2) {
             let diff = num1 - num2;
-            return diff;
+            output.textContent = diff;
         }
 
         function multiply(num1, num2) {
             let product = num1 * num2;
-            return product;
+            output.textContent = product;
         }
 
         function divide(num1, num2) {
             let quotient = num1 / num2;
-            return quotient;
+            output.textContent = quotient;
         }
     </script>
 </body>
