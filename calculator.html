@@ -23,7 +23,7 @@
                     <input type="button" value="7" class="number">
                     <input type="button" value="8" class="number">
                     <input type="button" value="9" class="number">
-                    <input type="button" value="*" class="operator">
+                    <input type="button" value="X" class="operator">
                 </div>
                 <div>
                     <input type="button" value="4" class="number">
@@ -59,8 +59,7 @@
         let output = document.querySelector('h1');
 
 
-        function numberInput() { 
-            numberButton.forEach(button => button.addEventListener('click', function(e) {
+        const numberInput = numberButton.forEach(button => button.addEventListener('click', function(e) {
             if(e.target.value === "." && output.textContent.includes('.')) {
                 return;
             }
@@ -68,9 +67,6 @@
             output.textContent += e.target.value;
             return e.target.value;
         }))
-    }
-
-    numberInput();
 
         const allClear = allClearButton.addEventListener('click', () => output.textContent = '');
 
@@ -81,34 +77,27 @@
                 first_input = Number(output.textContent);
                 output.textContent = '';
                 operator = e.target.value;
-                console.log(operator);
+                console.log(operator, first_input);
             })
         })
 
 
         const equalInput = equalButton.addEventListener('click', () => {
             second_input = Number(output.textContent);
-            output.textContent = operate(operator);
+
+            if(operator === 'X'){
+            multiply(first_input, second_input);
+            }
+            if(operator === '/'){
+            divide(first_input, second_input);
+            }
+            if(operator === '+'){
+            add(first_input, second_input);
+            }
+            if(operator === '-'){
+            subtract(first_input, second_input);
+            }
         });
-
-        function operate(operator) {
-            
-            if(operator === '+') {
-                add(first_input, second_input);
-            }
-
-            if(operator === '-') {
-                subtract(first_input, second_input);
-            }
-
-            if(operator === '*') {
-                multiply(first_input, second_input);
-            }
-
-            if(operator === '/') {
-                divide(first_input, second_input);
-            }
-        }
 
         function add(num1, num2) {
             let sum = num1 + num2;
