@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div class="calculator-cont">
+        <div class="calculator">
+            <form action="">
+                <div>
+                    <input type="text" name="" id="">
+                </div>
+                <div>
+                    <input type="button" value="AC">
+                    <input type="button" value="DE">
+                    <input type="button" value=".">
+                    <input type="button" value="/">
+                </div>
+                <div>
+                    <input type="button" value="7">
+                    <input type="button" value="8">
+                    <input type="button" value="9">
+                    <input type="button" value="*">
+                </div>
+                <div>
+                    <input type="button" value="4">
+                    <input type="button" value="5">
+                    <input type="button" value="6">
+                    <input type="button" value="-">
+                </div>
+                <div>
+                    <input type="button" value="1">
+                    <input type="button" value="2">
+                    <input type="button" value="3">
+                    <input type="button" value="+">
+                </div>
+                <div>
+                    <input type="button" value="0">
+                    <input type="button" value="=">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let first_input
+        let operator
+        let second_input
+
+        function operate(first_input, second_input, operator) {
+            
+            if(operator === 'add') {
+                add(first_input, second_input);
+            }
+
+            if(operator === 'subtract') {
+                subtract(first_input, second_input);
+            }
+
+            if(operator === 'multiply') {
+                multiply(first_input, second_input);
+            }
+
+            if(operator === 'divide') {
+                divide(first_input, second_input);
+            }
+        }
+
+        function add(num1, num2) {
+            let sum = num1 + num2;
+            return sum;
+        }
+
+        function subtract(num1, num2) {
+            let diff = num1 - num2;
+            return diff;
+        }
+
+        function multiply(num1, num2) {
+            let product = num1 * num2;
+            return product;
+        }
+
+        function divide(num1, num2) {
+            let quotient = num1 / num2;
+            return quotient;
+        }
+    </script>
+</body>
+</html>
